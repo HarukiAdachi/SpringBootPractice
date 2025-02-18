@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>お問い合わせ編集画面</title>
+</head>
+
+<body>
+	<h1>お問い合わせ編集</h1>
+
+	<form th:action="@{/admin/contacts/{id}/update(id=${contact.id})}" method="post">
+		<table>
+			<tr>
+				<th>姓</th>
+				<td><input type="text" name="lastName" th:value="${contact.lastName}" required></td>
+			</tr>
+			<tr>
+				<th>名</th>
+				<td><input type="text" name="firstName" th:value="${contact.firstName}" required></td>
+			</tr>
+			<tr>
+				<th>メールアドレス</th>
+				<td><input type="email" name="email" th:value="${contact.email}" required></td>
+			</tr>
+			<tr>
+				<th>電話番号</th>
+				<td><input type="tel" name="phone" th:value="${contact.phone}" required></td>
+			</tr>
+			<tr>
+				<th>郵便番号</th>
+				<td><input type="text" name="zipCode" th:value="${contact.zipCode}" required></td>
+			</tr>
+			<tr>
+				<th>住所</th>
+				<td><input type="text" name="address" th:value="${contact.address}" required></td>
+			</tr>
+			<tr>
+				<th>建物名</th>
+				<td><input type="text" name="buildingName" th:value="${contact.buildingName}"></td>
+			</tr>
+			<tr>
+				<th>お問い合わせ種別</th>
+				<td>
+					<select name="contactType" required>
+						<option value="services" th:selected="${contact.contactType == 'services'}">サービス</option>
+						<option value="technicalQuestions" th:selected="${contact.contactType == 'technicalQuestions'}">
+							技術的な質問</option>
+						<option value="others" th:selected="${contact.contactType == 'others'}">その他</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>内容</th>
+				<td><textarea name="body" required th:text="${contact.body}"></textarea></td>
+			</tr>
+		</table>
+
+		<input type="submit" value="更新">
+	</form>
+
+	<form th:action="@{/admin/contacts/{id}/delete(id=${contact.id})}" method="post">
+		<input type="submit" value="削除">
+	</form>
+
+	<form th:action="@{/admin/logout}" method="post">
+		<input type="submit" value="ログアウト">
+	</form>
+
+	<a th:href="@{/admin/contacts/{id}(id=${contact.id})}">詳細へ</a>
+	<a href="/admin/contacts">一覧へ</a>
+</body>
+
+</html>
