@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>お問い合わせ詳細</title>
+</head>
+
+<body>
+	<h1>お問い合わせ内容詳細</h1>
+	<table border="1">
+		<tr>
+			<td>ID</td>
+			<td>${contact.id}</td>
+		</tr>
+		<tr>
+			<td>姓</td>
+			<td>${contact.lastName}</td>
+		</tr>
+		<tr>
+			<td>名</td>
+			<td>${contact.firstName}</td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td>${contact.email}</td>
+		</tr>
+		<tr>
+			<td>電話番号</td>
+			<td>${contact.phone}</td>
+		</tr>
+		<tr>
+			<td>郵便番号</td>
+			<td>${contact.zipCode}</td>
+		</tr>
+		<tr>
+			<td>住所</td>
+			<td>${contact.address}</td>
+		</tr>
+		<tr>
+			<td>建物名</td>
+			<td>${contact.buildingName}</td>
+		</tr>
+		<tr>
+			<td>内容</td>
+			<td>${contact.contactType}</td>
+		</tr>
+		<tr>
+			<td>作成日時</td>
+			<td>${contact.createdAt}</td>
+		</tr>
+		<tr>
+			<td>更新日時</td>
+			<td>${contact.updateAt}</td>
+		</tr>
+	</table>
+	<form action="/admin/contacts" method="get">
+		<input type="submit" value="一覧">
+	</form>
+
+	<form action="/admin/contacts/${contact.id}/edit" method="get">
+		<input type="submit" value="編集">
+	</form>
+
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" value="ログアウト">
+	</form>
+</body>
+
+</html>
